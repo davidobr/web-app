@@ -1,1 +1,10 @@
-This is the about page
+@extends('layouts.default')
+@section('page-content')
+    <section class="h-screen flex items-center">
+        <div class="container mx-auto">
+            <h1 class="text-white text-8xl mb-6 uppercase font-black">
+                About <span class="text-blue-500">Us</span>
+            </h1>
+        </div>
+    </section>        
+@endsection
