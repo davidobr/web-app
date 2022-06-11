@@ -32,3 +32,6 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 });
+Route::get('/login-form', function () {
+    return view('login-form');
+});
