@@ -39,3 +39,6 @@ Route::get('/login-form', function () {
 Route::get('/contact-us', function () {
 	return view('contact-us');
 });
+Route::get('/register-form', function () {
+    return view('register-form');
+});
