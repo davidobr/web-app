@@ -19,8 +19,8 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
-        <!--<link rel="stylesheet" href="{{ asset('css/app.css') }}"> Will try and find a resolution for why this isn't working later-->
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!--Will try and find a resolution for why this isn't working later-->
     </head>
     <body class="bg-gray-900">
         <header class="fixed top-0 left-0 right-0">
