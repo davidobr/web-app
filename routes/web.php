@@ -25,20 +25,20 @@ Route::get('contact', function () {
     return view('contact');
 });
 
-Route::get('/login', function () {
+/**Route::get('/login', function () {
     return view('login');
 });
 
 Route::get('/register', function () {
     return view('register');
-});
-Route::get('/login-form', function () {
-    return view('login-form');
-});
+});**/
 
 Route::get('/contact-us', function () {
 	return view('contact-us');
 });
-Route::get('/register-form', function () {
-    return view('register-form');
-});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';

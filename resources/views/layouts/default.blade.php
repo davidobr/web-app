@@ -29,8 +29,25 @@
                     <a href="/" class="mx-3 hover:text-blue-500">Home</a>
                     <a href="/about" class="mx-3 hover:text-blue-500">About</a>
                     <a href="/contact" class="mx-3 hover:text-blue-500">Contact</a>
-                    <a href="/login" class="mx-3 hover:text-blue-500">Login</a>
-                    <a href="/register" class="mx-3 hover:text-blue-500">Register</a>
+                    @if (Route::has('login'))
+                        @auth
+                            <a href="{{ route('dashboard') }}" class="mx-3 hover:text-blue-500">Dashboard</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <a href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();" class="mx-3 hover:text-blue-500">
+                                    {{ __('Log Out') }}
+                                </a>
+                        </form>
+                        @else
+                            <a href="{{ route('login') }}" class="mx-3 hover:text-blue-500">Login</a>
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="mx-3 hover:text-blue-500">Register</a>
+                            @endif
+                        @endauth
+                    @endif
                 </nav>    
             </div>
         </header>
