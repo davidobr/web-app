@@ -7,7 +7,7 @@
                     {{ __('Dashboard') }}
                 </h2>
                 <div class="w-full max-w-xs" style="color:white;">
-                    You're logged in, {{ Auth::user()->name }}!
+                    You're logged in, {{ Auth::user()->username }}!
                     <!-- Session Status -->
                     <x-auth-session-status class="mb-4" :status="session('status')" />
 
