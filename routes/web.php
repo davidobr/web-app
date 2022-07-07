@@ -21,7 +21,7 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('contact', function () {
+Route::get('/contact', function () {
     return view('contact');
 });
 
@@ -40,5 +40,9 @@ Route::get('/contact-us', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/weather-checker', function (){
+    return view('weather-checker');
+})->middleware(['auth'])->name('weather');
 
 require __DIR__.'/auth.php';

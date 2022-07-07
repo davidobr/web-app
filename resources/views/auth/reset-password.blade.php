@@ -1,11 +1,11 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
+@extends('layouts.default')
+@section('page-content')
+    <section class="h-screen flex items-center">
+        <div class="container mx-auto">
+            <h1 class="text-white text-8xl mb-6 uppercase font-black">
+            	<p class="text-blue-500">Forgot password? No problem</p>
+                <div class="w-full max-w-xs">
+                	<?php //Form code was taking from tailwind: https://v1.tailwindcss.com/components/forms will need to learn more about tailwind and refactor more ?>
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
@@ -44,5 +44,13 @@
                 </x-button>
             </div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+        <!-- Session Status -->
+		<x-auth-session-status class="mb-4" :status="session('status')" />
+
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        </div>
+    </h1>
+</div>
+</section>        
+@endsection
