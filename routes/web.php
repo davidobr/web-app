@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WeatherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,8 +42,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/weather-checker', function (){
-    return view('weather-checker');
+Route::get('/weather-checker', [WeatherController::class, 'fetchData'], function (){
+    return view('weather-checker?weather=London'); //A little hacky requesting a parameter from the get go, need to work out a better alternative but for now it works
 })->middleware(['auth'])->name('weather');
+
+// Route::get('/weather-checker/{location}', function ($location) {
+//     return 'User '.$location;
+// });
+
+//Route::get('/weather-checker', [WeatherController::class, 'fetchData']);
+
+//Route::get('/weather-checker', 'WeatherController::class@david');
 
 require __DIR__.'/auth.php';
