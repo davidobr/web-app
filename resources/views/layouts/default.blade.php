@@ -18,39 +18,56 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+
+            #mobile-menu {
+                position: fixed;
+                top: 0;
+                left: -200px;
+                width: 200px;
+                height: 100%;
+                background-color: #333;
+                transition: left 0.3s ease-in-out;
+                z-index: 1000;
+            }
+
+            #mobile-menu a {
+                display: block;
+                padding: 10px;
+                color: #fff;
+                text-decoration: none;
+            }
         </style>
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!--Will try and find a resolution for why this isn't working later-->
     </head>
     <body class="bg-gray-900">
-        <header class="fixed top-0 left-0 right-0">
+        <header class="fixed top-0 left-0 right-0 bg-gray-900">
             <div class="container mx-auto p-4">
                 <nav class="flex justify-end text-white">
-                    <a href="/" class="mx-3 hover:text-blue-500">Home</a>
-                    <a href="/about" class="mx-3 hover:text-blue-500">About</a>
-                    <a href="/contact" class="mx-3 hover:text-blue-500">Contact</a>
-                    @if (Route::has('login'))
-                        @auth
-                            <a href="{{ route('dashboard') }}" class="mx-3 hover:text-blue-500">Dashboard</a>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+                    <a href="/" class="mx-2 hover:text-blue-500">Home</a>
+                    <a href="/about" class="mx-2 hover:text-blue-500">About</a>
+                    <a href="/contact" class="mx-2 hover:text-blue-500">Contact</a>
 
-                                <a href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();" class="mx-3 hover:text-blue-500">
-                                    {{ __('Log Out') }}
-                                </a>
+                    @auth
+                        <a href="{{ route('dashboard') }}" class="mx-2 hover:text-blue-500">Dashboard</a>
+                        <form method="POST" action="{{ route('logout') }}" class="flex">
+                            @csrf
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="mx-2 hover:text-blue-500">
+                                {{ __('Logout') }}
+                            </a>
                         </form>
-                        @else
-                            <a href="{{ route('login') }}" class="mx-3 hover:text-blue-500">Login</a>
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="mx-3 hover:text-blue-500">Register</a>
-                            @endif
-                        @endauth
-                    @endif
-                </nav>    
+                    @else
+                        <a href="{{ route('login') }}" class="mx-2 hover:text-blue-500">Login</a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="mx-2 hover:text-blue-500">Register</a>
+                        @endif
+                    @endauth
+                </nav>
             </div>
         </header>
+
+
+
         <main>
             @yield('page-content')
         </main>
